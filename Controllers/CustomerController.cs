@@ -17,11 +17,15 @@ namespace Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Customer>> Get()
+        public async Task<IEnumerable<Customer>> Get(int page = 1, int pageSize = 10)
         {
-            return await _customerCollection.Find(FilterDefinition<Customer>.Empty).ToListAsync();
+            return await _customerCollection
+                .Find(FilterDefinition<Customer>.Empty)
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
         }
-
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByID(string id)
         {
@@ -32,19 +36,28 @@ namespace Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Customer customer)
         {
-            await _customerCollection.InsertOneAsync(customer);
-            return CreatedAtAction(nameof(GetByID), new { id = customer.Id }, customer);
-        }
+            try
+            {
+                await _customerCollection.InsertOneAsync(customer);
+                return CreatedAtAction(nameof(GetByID), new { id = customer.Id }, customer);
+            }
+            catch (Exception ex)
+            {
+                // Log the error (not shown)
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+                }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, Customer customer)
         {
-            var costumer = await _customerCollection.Find<Customer>(c => c.Id == id).FirstOrDefaultAsync();
-            if (costumer is null)
+            var result = await _customerCollection.ReplaceOneAsync(c => c.Id == id, customer);
+            
+            if (result.MatchedCount == 0)
             {
                 return NotFound();
             }
-            await _customerCollection.ReplaceOneAsync(c => c.Id == id, customer);
+            
             return Ok();
         }
 
