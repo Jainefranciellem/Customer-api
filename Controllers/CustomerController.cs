@@ -35,6 +35,19 @@ namespace Controllers
             await _customerCollection.InsertOneAsync(customer);
             return CreatedAtAction(nameof(GetByID), new { id = customer.Id }, customer);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, Customer customer)
+        {
+            var costumer = await _customerCollection.Find<Customer>(c => c.Id == id).FirstOrDefaultAsync();
+            if (costumer is null)
+            {
+                return NotFound();
+            }
+            await _customerCollection.ReplaceOneAsync(c => c.Id == id, customer);
+            return Ok();
+        }
+
         
     }
 }
