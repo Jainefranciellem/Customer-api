@@ -28,5 +28,13 @@ namespace Controllers
             var costumer = await _customerCollection.Find<Customer>(c => c.Id == id).FirstOrDefaultAsync();
             return costumer is not null ? (IActionResult)Ok(costumer) : NotFound();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Customer customer)
+        {
+            await _customerCollection.InsertOneAsync(customer);
+            return CreatedAtAction(nameof(GetByID), new { id = customer.Id }, customer);
+        }
+        
     }
 }
