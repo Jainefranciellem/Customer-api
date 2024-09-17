@@ -48,6 +48,16 @@ namespace Controllers
             return Ok();
         }
 
-        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var costumer = await _customerCollection.Find<Customer>(c => c.Id == id).FirstOrDefaultAsync();
+            if (costumer is null)
+            {
+                return NotFound();
+            }
+            await _customerCollection.DeleteOneAsync(c => c.Id == id);
+            return Ok();
+        }
     }
 }
