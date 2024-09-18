@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<MongoDbService>(); // Faz injeção de dependência do serviço de conexão com o MongoDB
+builder.Services.AddSingleton<MongoDbService>(); 
 
 var app = builder.Build();
 
