@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CustomerCruApi.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a654fe51c69e1b1e2cab74209e3eee8f9bdcfbb0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22d580a1697ea5370ecb3af49b99f5c75bc4eb9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CustomerCruApi.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CustomerCruApi.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
