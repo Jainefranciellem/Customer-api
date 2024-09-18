@@ -38,7 +38,7 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
     {
         var customer = new Customer
         {
-            Id = "6508e7f5e2b08d4e87e4f1c2",
+            Id = "6508e7f5e2b08d4e83e4f1c2",
             FirstName = "John",
             LastName = "Doe",
             Email = "johndoe@example.com",
@@ -53,20 +53,36 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
     public async Task TestUpdateCustomer()
     {
         var customer = new Customer  {
-            Id = "6508e2f5e4b08d4e81e4f1c2",
+            Id = "6508e2f5e4b18d4e81e4f1c2",
             FirstName = "John",
             LastName = "Doe",
             Email = "johndoe@example.com",
             Phone = "1234567890"
         };;
         
-        // Primeiro, cria um cliente para atualizar
         var postResponse = await _clientTest.PostAsJsonAsync("/api/Customer", customer);
         postResponse.EnsureSuccessStatusCode();
 
-        // Atualiza o cliente
         customer.FirstName = "John Updated";
         var putResponse = await _clientTest.PutAsJsonAsync($"/api/Customer/{customer.Id}", customer);
         Assert.Equal(System.Net.HttpStatusCode.OK, putResponse?.StatusCode);
+    }
+
+    [Theory(DisplayName = "Testando a rota /DELETE Customer")]
+    [InlineData("/api/Customer/{id}")]
+    public async Task TestDeleteCustomer(string url)
+    {
+        var customer = new Customer {
+            Id = "6508e2f5e4b02d4e81e4f1c2",
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "johndoe@example.com",
+            Phone = "1234567890"
+         };
+        var postResponse = await _clientTest.PostAsJsonAsync("/api/Customer", customer);
+        postResponse.EnsureSuccessStatusCode();
+
+        var response = await _clientTest.DeleteAsync(url.Replace("{id}", customer.Id));
+        Assert.Equal(System.Net.HttpStatusCode.OK, response?.StatusCode);
     }
 }
