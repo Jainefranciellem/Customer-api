@@ -18,4 +18,18 @@ export class CustomerListComponent implements OnInit {
       this.customers = data;
     });
   }
+
+  editCustomer(customer: any) {
+    console.log('Editar cliente:', customer);
+  }
+
+  deleteCustomer(id: number) {
+    if (confirm('Você tem certeza que deseja excluir este cliente?')) {
+      this.customerService.deleteCustomer(id).subscribe(() => {
+        
+        this.customers = this.customers.filter((c) => c.id !== id);
+        console.log('Cliente excluído com sucesso!');
+      });
+    }
+  }
 }
