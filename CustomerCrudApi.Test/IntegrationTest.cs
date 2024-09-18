@@ -2,6 +2,9 @@ namespace CustomerCrudApi.Test;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.Hosting;
 using CustomerCrudApi.Controllers;
+using Entities;
+using System.Net.Http.Json;
+
 
 public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
 {
@@ -29,4 +32,22 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
         var response = await _clientTest.GetAsync(url.Replace("{id}", testId));
         Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK || response.StatusCode == System.Net.HttpStatusCode.NotFound);
     }
+
+    [Fact(DisplayName = "Testando a rota /POST Customer")]
+    public async Task TestCreateCustomer()
+    {
+        var customer = new Customer
+        {
+            Id = "6508e7f5e4b08d4e87e4f1c2",
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "johndoe@example.com",
+            Phone = "1234567890"
+        };
+
+        var response = await _clientTest.PostAsJsonAsync("/api/Customer", customer);
+        Assert.Equal(System.Net.HttpStatusCode.Created, response?.StatusCode);
+    }
+
+    
 }
