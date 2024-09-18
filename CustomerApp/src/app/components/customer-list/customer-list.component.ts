@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../customer.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-customer-list',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './customer-list.component.html',
-  styleUrl: './customer-list.component.css'
 })
-export class CustomerListComponent {
+export class CustomerListComponent implements OnInit {
+  customers: any[] = [];
 
+  constructor(private customerService: CustomerService) {}
+
+  ngOnInit(): void {
+    this.customerService.getCustomers().subscribe((data) => {
+      this.customers = data;
+    });
+  }
 }
