@@ -3,7 +3,8 @@ using Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
-namespace Controllers
+namespace CustomerCrudApi.Controllers
+
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -43,7 +44,6 @@ namespace Controllers
             }
             catch (Exception ex)
             {
-                // Log the error (not shown)
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
                 }
