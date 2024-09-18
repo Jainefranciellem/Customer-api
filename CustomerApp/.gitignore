@@ -1,0 +1,7 @@
+# Diretórios de build
+/bin/
+/obj/
+/Debug/
+/Release/
+/Debug\net8.0/
+/Release\net8.0/
