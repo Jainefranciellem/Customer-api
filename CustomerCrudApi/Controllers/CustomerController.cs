@@ -18,13 +18,9 @@ namespace CustomerCrudApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Customer>> Get(int page = 1, int pageSize = 10)
+        public async Task<IEnumerable<Customer>> Get()
         {
-            return await _customerCollection
-                .Find(FilterDefinition<Customer>.Empty)
-                .Skip((page - 1) * pageSize)
-                .Limit(pageSize)
-                .ToListAsync();
+            return await _customerCollection.Find(c => true).ToListAsync();
         }
         
         [HttpGet("{id}")]

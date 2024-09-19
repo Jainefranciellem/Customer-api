@@ -7,7 +7,7 @@ namespace Entities
     {
         [BsonId]
         [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [BsonElement("first_name"), BsonRepresentation(BsonType.String)]
         public string FirstName { get; set; }
         [BsonElement("last_name"), BsonRepresentation(BsonType.String)]
