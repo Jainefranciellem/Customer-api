@@ -12,7 +12,7 @@ import { Customer } from '../../Customer';
 })
 export class CustomerListComponent implements OnInit {
   customers: Customer[] = [];
-  paginatedCustomers: any[] = [];
+  paginatedCustomers: Customer[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10; 
 
@@ -52,6 +52,7 @@ export class CustomerListComponent implements OnInit {
     if (confirm('Você tem certeza que deseja excluir este cliente?')) {
       this.customerService.deleteCustomer(id).subscribe(() => {
         this.customers = this.customers.filter((c) => c.id !== id);
+        this.updatePaginatedCustomers();
       });
     }
   }

@@ -17,7 +17,7 @@
           <td class="border px-4 py-2">{{ customer.phone }}</td>
           <td class="border px-4 py-2">
             <button (click)="editCustomer(customer)" class="bg-green-500 text-white px-4 py-1 rounded mr-2 hover:bg-green-500">Editar</button>
-            <button  (click)="deleteCustomer(customer.id)" class="bg-gray-500 text-white px-4 py-1 rounded hover:ring-gray-500">Excluir</button>
+            <button  (click)="customer.id !== undefined && deleteCustomer(customer.id)" class="bg-gray-500 text-white px-4 py-1 rounded hover:ring-gray-500">Excluir</button>
           </td>
         </tr>
       </tbody>
