@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./CustomerCrudApi
+      dockerfile: Dockerfile
+    container_name: CustomerCrudApi
+    ports:
+      - "5028:80"
+    depends_on:
+      - mongodb
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      MongoDB__ConnectionString: "mongodb://root:example@mongodb:27017/customerDb?authSource=admin"
+      MongoDB__DatabaseName: "customerDb"
+    volumes:
+      - ./CustomerCrudApi:/app
+
+  frontend:
+    build:
+      context: ./CustomerApp
+      dockerfile: Dockerfile
+    container_name: CustomerApp
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./CustomerApp:/app
+
+volumes:
+  mongo-data:
