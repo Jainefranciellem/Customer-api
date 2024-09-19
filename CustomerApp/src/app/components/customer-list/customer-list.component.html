@@ -1,6 +1,6 @@
 <section class="">
-  <h2 class="text-2xl font-bold mb-4 text-center">Lista de Clientes</h2>
-  <div class="m-44">
+  <h2 class="text-2xl font-bold text-center">Lista de Clientes</h2>
+  <div class="m-14">
     <table class="min-w-full border border-gray-300">
       <thead class="bg-gray-200">
         <tr>
@@ -16,8 +16,8 @@
           <td class="border px-4 py-2">{{ customer.email }}</td>
           <td class="border px-4 py-2">{{ customer.phone }}</td>
           <td class="border px-4 py-2">
-            <button (click)="editCustomer(customer)" class="bg-blue-500 text-white px-4 py-1 rounded mr-2 hover:bg-blue-600">Editar</button>
-            <button  (click)="deleteCustomer(customer.id)" class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Excluir</button>
+            <button (click)="editCustomer(customer)" class="bg-green-500 text-white px-4 py-1 rounded mr-2 hover:bg-green-500">Editar</button>
+            <button  (click)="deleteCustomer(customer.id)" class="bg-gray-500 text-white px-4 py-1 rounded hover:ring-gray-500">Excluir</button>
           </td>
         </tr>
       </tbody>
@@ -27,7 +27,7 @@
       <button 
         *ngFor="let page of [].constructor(totalPages); let i = index"
         (click)="changePage(i + 1)" 
-        [class.bg-blue-500]="i + 1 === currentPage"
+        [class.bg-gray-400]="i + 1 === currentPage"
         class="mx-1 px-3 py-1 border rounded hover:bg-gray-300"
       >
         {{ i + 1 }}

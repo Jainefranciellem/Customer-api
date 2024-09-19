@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,15 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'customer-crud-app';
+  title = 'Gerenciador de Clientes';
+
+  constructor(private router: Router) {}
+
+  CustomerCreate(): void {
+    this.router.navigate(['/customer-create']);
+  }
+  CustomerList(): void {
+    this.router.navigate(['/customer-list']);
+  }
 }
+
