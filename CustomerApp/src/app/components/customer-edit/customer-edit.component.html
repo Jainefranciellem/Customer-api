@@ -1,0 +1,35 @@
+<section *ngIf="isEditing">
+    <h2 class="text-2xl font-bold mb-4 text-center">Editar Cadastro</h2>
+    <div class="m-8 p-4 bg-white shadow-md rounded-lg">
+      <form (ngSubmit)="saveCustomer()">
+      
+        <div class="mb-4">
+          <label for="completeName" class="block text-sm font-medium text-gray-700">Nome Completo</label>
+          <input type="text" id="completeName"
+                 [(ngModel)]="customer.firstName"
+                 name="completeName"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-indigo-500 sm:text-sm">
+        </div>
+      
+        <div class="mb-4">
+          <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
+          <input type="text" id="cpf"
+                 [(ngModel)]="customer.email"
+                 name="cpf"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-indigo-500 sm:text-sm">
+        </div>
+      
+        <div class="mb-4">
+          <label for="phone" class="block text-sm font-medium text-gray-700">Telefone</label>
+          <input type="text" id="phone"
+                 [(ngModel)]="customer.phone"
+                 name="phone"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-indigo-500 sm:text-sm">
+        </div>
+      
+        <button type="submit" class="px-4 py-2 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Submeter</button>
+        <button type="button" (click)="cancelEdit()" class="px-4 py-2 bg-gray-500 text-white font-semibold rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 ml-2">Cancelar</button>
+      </form>
+    </div>
+  </section>
+  

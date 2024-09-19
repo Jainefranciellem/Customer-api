@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../customer.service';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,7 +12,7 @@ import { NgFor } from '@angular/common';
 export class CustomerListComponent implements OnInit {
   customers: any[] = [];
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService, private router: Router) {}
 
   ngOnInit(): void {
     this.customerService.getCustomers().subscribe((data) => {
@@ -20,7 +21,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   editCustomer(customer: any) {
-    console.log('Editar cliente:', customer);
+    this.router.navigate(['/edit', customer.id]);
   }
 
   deleteCustomer(id: number) {

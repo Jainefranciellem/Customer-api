@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
-import { ListComponent } from './pages/list/list.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 
 export const routes: Routes = [
-    {
-        path: 'list',
-        component: ListComponent
-    }
+    { path: 'list', component: CustomerListComponent},
+    { path: 'edit/:id', component: CustomerEditComponent },
 ];
