@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../customer.service';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { Customer } from '../../Customer';
 
 @Component({
   selector: 'app-customer-list',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './customer-list.component.html',
 })
 export class CustomerListComponent implements OnInit {
-  customers: any[] = [];
+  customers: Customer[] = [];
   paginatedCustomers: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10; 

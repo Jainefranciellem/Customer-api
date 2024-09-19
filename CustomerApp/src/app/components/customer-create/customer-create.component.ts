@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CustomerService } from '../../customer.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Customer } from '../../Customer';
 
 @Component({
   selector: 'app-customer-create',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CustomerCreateComponent {
 
-  customer: any = {
+  customer: Customer = {
     firstName: '',
     lastName: '',
     email: '',
