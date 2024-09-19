@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class CustomerListComponent implements OnInit {
   customers: any[] = [];
+  paginatedCustomers: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 10; 
 
   constructor(private customerService: CustomerService, private router: Router) {}
   
@@ -21,7 +24,23 @@ export class CustomerListComponent implements OnInit {
   loadCustomers(): void {
     this.customerService.getCustomers().subscribe(customers => {
       this.customers = customers;
+      this.updatePaginatedCustomers();
     });
+  }
+
+  updatePaginatedCustomers(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedCustomers = this.customers.slice(startIndex, endIndex);
+  }
+
+  changePage(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedCustomers();
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.customers.length / this.itemsPerPage);
   }
   
   editCustomer(customer: any) {
