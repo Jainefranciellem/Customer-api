@@ -13,23 +13,25 @@ export class CustomerListComponent implements OnInit {
   customers: any[] = [];
 
   constructor(private customerService: CustomerService, private router: Router) {}
-
+  
   ngOnInit(): void {
-    this.customerService.getCustomers().subscribe((data) => {
-      this.customers = data;
+    this.loadCustomers();
+  }
+  
+  loadCustomers(): void {
+    this.customerService.getCustomers().subscribe(customers => {
+      this.customers = customers;
     });
   }
-
+  
   editCustomer(customer: any) {
-    this.router.navigate(['/edit', customer.id]);
+    this.router.navigate(['/customer-edit', customer.id]);
   }
 
   deleteCustomer(id: number) {
     if (confirm('Você tem certeza que deseja excluir este cliente?')) {
       this.customerService.deleteCustomer(id).subscribe(() => {
-        
         this.customers = this.customers.filter((c) => c.id !== id);
-        console.log('Cliente excluído com sucesso!');
       });
     }
   }

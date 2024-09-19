@@ -35,21 +35,19 @@ export class CustomerEditComponent implements OnInit {
     this.customerService.getCustomerById(id).subscribe(
       (data) => {
         this.customer = data;
-        console.log('Loaded Customer:', this.customer);
       },
       (error) => {
         console.error('Erro ao carregar o cliente:', error);
       }
     );
   }
-  
+
   saveCustomer(): void {
     if (this.customer && this.customer.id) {
       this.customerService.updateCustomer(this.customer.id, this.customer).subscribe(
         (response) => {
           console.log('Cliente atualizado com sucesso:', response);
-          // Redireciona para a lista de clientes
-          this.router.navigate(['/list']);
+          this.router.navigate(['/customer-list']);
         },
         (error) => {
           console.error('Erro ao atualizar o cliente:', error);
@@ -59,7 +57,6 @@ export class CustomerEditComponent implements OnInit {
   }
 
   cancelEdit(): void {
-    // Redireciona para a lista de clientes sem salvar alterações
-    this.router.navigate(['/list']);
+    this.router.navigate(['/customer-list']);
   }
 }
