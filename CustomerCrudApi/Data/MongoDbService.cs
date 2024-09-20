@@ -15,6 +15,6 @@ namespace Data
             var mongoClient = new MongoClient(mongoUrl);
             _database = mongoClient.GetDatabase(mongoUrl.DatabaseName);
         }
-        public IMongoDatabase Database => _database;
+        public IMongoDatabase Database => _database ?? throw new InvalidOperationException("Database not initialized.");
     }
 }
