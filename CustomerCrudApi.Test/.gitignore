@@ -1,0 +1,16 @@
+# Ignorar arquivos de build
+bin/
+obj/
+
+# Ignorar arquivos de cache e de configuração de build
+*.pdb
+*.dll
+*.cache
+*.csprojAssemblyReference.cache
+
+# Ignorar arquivos de informações de debug
+*.sourcelink.json
+*.refint
+
+# Ignorar arquivos de versão intermediária
+.vref

@@ -38,7 +38,7 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
     {
         var customer = new Customer
         {
-            Id = "6508e7f5e2b08d4e83e4f1c2",
+            Id = "",
             FirstName = "John",
             LastName = "Doe",
             Email = "johndoe@example.com",
@@ -52,8 +52,9 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
       [Fact(DisplayName = "Testando a rota /PUT Customer")]
     public async Task TestUpdateCustomer()
     {
+        // Mudar o id a cada teste, pois não está sendo mockado
         var customer = new Customer  {
-            Id = "6508e2f5e4b18d4e81e4f1c2",
+            Id = "6508e2f5e4b12d8e91e4f8c2",
             FirstName = "John",
             LastName = "Doe",
             Email = "johndoe@example.com",
@@ -72,8 +73,9 @@ public class IntegrationTest: IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/api/Customer/{id}")]
     public async Task TestDeleteCustomer(string url)
     {
+        // Mudar o id a cada teste, pois não está sendo mockado
         var customer = new Customer {
-            Id = "6508e2f5e4b02d4e81e4f1c2",
+            Id = "6508e2f2e4b08d4e01e2f1c2",
             FirstName = "John",
             LastName = "Doe",
             Email = "johndoe@example.com",
