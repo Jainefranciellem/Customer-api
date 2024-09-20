@@ -2,7 +2,7 @@
 
 Este projeto é uma aplicação de gerenciamento de clientes que consiste em uma API desenvolvida em **.NET 8** com **MongoDB** no backend e um frontend construído em **Angular** com **Tailwind CSS**. O projeto também inclui testes de integração para validar o correto funcionamento da API.
 
-![Imagem da Aplicação](../customer-crud-project/CustomerApp/src/images/image.png)
+![Imagem da Aplicação](./images/image.png)
 
 
 ## Índice
