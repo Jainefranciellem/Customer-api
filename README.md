@@ -13,6 +13,7 @@ Este projeto é uma aplicação de gerenciamento de clientes que consiste em uma
 - [Executando os Testes de Integração](#executando-os-testes-de-integração)
 - [Sobre a API](#sobre-a-api)
 - [Funcionamento dos Testes de Integração](#funcionamento-dos-testes-de-integração)
+- [Utilização do Docker](#utilização-do-docker)
 
 ---
 
