@@ -8,40 +8,38 @@ import { Customer } from '../../Customer';
 @Component({
   selector: 'app-customer-create',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule
-  ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './customer-create.component.html',
 })
 export class CustomerCreateComponent {
-
   customer: Customer = {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
   };
 
-  constructor(private customerService: CustomerService, private router: Router) {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   createCustomer(): void {
     this.customerService.createCustomer(this.customer).subscribe(
-      data =>{
+      (data) => {
         console.log(data);
         this.goToCustomerList();
       },
-      error => console.log(error));
+      (error) => console.log(error)
+    );
   }
 
-  goToCustomerList(){
+  goToCustomerList() {
     this.router.navigate(['/customer-list']);
   }
 
-
-  onSubmit(){
+  onSubmit() {
     console.log(this.customer);
     this.createCustomer();
   }

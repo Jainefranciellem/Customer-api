@@ -14,16 +14,19 @@ export class CustomerListComponent implements OnInit {
   customers: Customer[] = [];
   paginatedCustomers: Customer[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 10; 
+  itemsPerPage: number = 10;
 
-  constructor(private customerService: CustomerService, private router: Router) {}
-  
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
     this.loadCustomers();
   }
-  
+
   loadCustomers(): void {
-    this.customerService.getCustomers().subscribe(customers => {
+    this.customerService.getCustomers().subscribe((customers) => {
       this.customers = customers;
       this.updatePaginatedCustomers();
     });
@@ -43,7 +46,7 @@ export class CustomerListComponent implements OnInit {
   get totalPages(): number {
     return Math.ceil(this.customers.length / this.itemsPerPage);
   }
-  
+
   editCustomer(customer: any) {
     this.router.navigate(['/customer-edit', customer.id]);
   }
