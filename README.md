@@ -126,6 +126,32 @@ Esses testes são importantes para garantir que a API funcione como esperado, me
 ```bash
 dotnet test --filter "CustomerIntegrationTests"
 ```
+
+
+## Utilização do Docker
+
+Esta aplicação utiliza o Docker para facilitar o desenvolvimento e a implantação em ambientes consistentes. Com o Docker, você pode criar contêineres isolados que incluem todas as dependências necessárias, tornando a configuração do ambiente mais simples e rápida.
+
+### Pré-requisitos
+
+Antes de começar, certifique-se de que você tem o [Docker](https://www.docker.com/get-started) instalado na sua máquina.
+
+## Executando a Aplicação
+
+Para executar a aplicação, siga os passos abaixo:
+
+### 1. Clone este repositório:
+```bash
+git clone https://github.com/Jainefranciellem/Customer-api.git
+cd Customer-api
+```
+
+### 2. Rode a Docker Compose
+
+```bash
+docker-compose up
+```
+
 ## Contribuições
 Contribuições são bem-vindas! Se encontrar algum bug ou quiser adicionar novas funcionalidades, fique à vontade para abrir uma issue ou enviar um pull request.
 
