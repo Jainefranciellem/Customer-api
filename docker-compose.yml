@@ -1,13 +1,9 @@
-
 services:
   mongodb:
     image: mongo:6.0
-    container_name: mongo
+    container_name: mongodb
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - mongo-data:/data/db
 
@@ -17,14 +13,12 @@ services:
       dockerfile: Dockerfile
     container_name: CustomerCrudApi
     ports:
-      - "5028:80"
+      - "5028:5028"
     depends_on:
       - mongodb
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      MongoDB__ConnectionString: "mongodb://root:example@mongodb:27017/customerDb?authSource=admin"
-      MongoDB__DatabaseName: "customerDb"
-      
+      MongoDB__ConnectionString: "mongodb://mongodb:27017/customerDb"
 
   frontend:
     build:
@@ -32,8 +26,9 @@ services:
       dockerfile: Dockerfile
     container_name: CustomerApp
     ports:
-      - "4200:80"
+      - "4200:4200"
     depends_on:
       - backend
+    command: ["ng", "serve", "--host", "0.0.0.0"]
 volumes:
   mongo-data:
