@@ -56,6 +56,7 @@ Agora que as dependências estão instaladas e o MongoDB está configurado, voc�
 dotnet run
 ```
 A API estará rodando por padrão no endereço: ``https://localhost:5028``.
+
 ## Configurando o Frontend (Angular + Tailwind)
 
 ### 1. Instalar Dependências do Frontend
@@ -153,7 +154,7 @@ cd Customer-api
 ### 2. Rode a Docker Compose
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 ## Contribuições
