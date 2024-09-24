@@ -39,13 +39,12 @@ dotnet restore
 ### 2. Configurar o MongoDB
 
 - Certifique-se de ter o MongoDB rodando localmente ou em um serviço remoto.
-- Altere o arquivo ``appsettings.json`` para apontar para seu servidor MongoDB. Exemplo de configuração:
+- Altere o arquivo ``appsettings.json`` para apontar para o localhost. deve estar nessa configuração:
 
 ```json
 {
   "MongoDBSettings": {
     "ConnectionString": "mongodb://localhost:27017/customerDb",
-    "DatabaseName": "CustomerDb"
   }
 }
 ```
@@ -152,6 +151,15 @@ git clone https://github.com/Jainefranciellem/Customer-api.git
 cd Customer-api
 ```
 
+### 2. O arquivo ``appsettings.json`` deve estar dessa forma:
+
+```json
+{
+  "MongoDBSettings": {
+    "ConnectionString": "mongodb://mongodb:27017/customerDb",
+  }
+}
+```
 ### 2. Rode a Docker Compose
 
 ```bash
