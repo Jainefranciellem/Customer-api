@@ -75,6 +75,7 @@ Após instalar as dependências, execute o comando abaixo para rodar o servidor 
 ng serve
 ```
 O frontend estará acessível em ``http://localhost:4200``.
+ ### OBS: A lista de clientes estará vazia, pois o banco ainda não possui dados algum, crie um novo cliente no botão **Cadastrar Novo Cliente** para adicionar a lista.
 
 ### 3. Tailwind CSS
 
