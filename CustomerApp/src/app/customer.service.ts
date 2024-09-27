@@ -13,7 +13,7 @@ export class CustomerService {
 
   getCustomers(): Observable<any[]> {
     const cacheBuster = new Date().getTime(); // Adiciona um parâmetro para evitar cache
-    return this.http.get<any[]>(`${this.apiUrl}?cacheBuster=${cacheBuster}`);
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
   
 
