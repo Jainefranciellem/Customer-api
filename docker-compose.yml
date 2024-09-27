@@ -18,7 +18,7 @@ services:
       - mongodb
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      MongoDB__ConnectionString: "mongodb://mongodb:27017/customerDb"
+      MongoDB__ConnectionString: ${MONGO_CONNECTION_STRING}
 
   frontend:
     build:
